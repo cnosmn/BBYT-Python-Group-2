@@ -61,23 +61,48 @@ def mutlak_deger():
 mutlak_sonuc = mutlak_deger()
 print("Parametresiz Mutlak Değer Sonucu :", mutlak_sonuc)
 
-
-
-
 # 4- Parametreli - Dönüşlü
 
+def mutlak_parametreli(sayi):
+    if sayi < 0:
+        return -1 * sayi
+    else:
+        return sayi
+
+kullanici_sayisi = int(input("Bir sayı giriniz: "))
+parametreli_sonuc = mutlak_parametreli(kullanici_sayisi)
+
+print("Girilen Sayının Mutlak Değeri :", parametreli_sonuc)
+
+# faktoriyel hesaplama
+# 5! -> 5*4*3*2*1 -> 120
+
+def faktoriyel_hesapla(n):
+    sonuc = 1
+    for i in range(1, n + 1):
+        sonuc *= i # sonuc = sonuc * i
+
+    return sonuc
+    
+kullanici_faktoriyel = int(input("Faktoriyelini hesaplamak istediğiniz sayıyı giriniz: "))
+
+faktoriyel_sonuc = faktoriyel_hesapla(kullanici_faktoriyel)
+print("Girdiğiniz sayının faktoriyeli :", faktoriyel_sonuc)
 
 
 
+# ucgenin alanını hesaplayan fonksiyon
 
+def ucgen_alan(taban, yukseklik):
+    alan = (taban * yukseklik) / 2
+    return alan
 
+taban = int(input("Taban uzunluğunu giriniz: "))
+yukseklik = int(input("Yüksekliği giriniz: "))
 
+ucgen_alan_sonuc = ucgen_alan(taban, yukseklik)
 
-
-
-
-
-
+print("Girilen üçgenin alanı:", ucgen_alan_sonuc)
 
 
 
