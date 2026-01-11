@@ -36,11 +36,48 @@ def derin(kelime1,kelime2):
 
 derin("merhaba","Zeynep")
 
-print("osman")
-print("can")
-print("selam")
-
 # 3- parametresiz dönüşlü
+
+def parametresiz_donuslu():
+    a = 5
+    b = 27
+    return a + b
+
+print(parametresiz_donuslu())
+
+paramtresiz_sonuc = parametresiz_donuslu()
+print("parametresiz donuslu fonksiyon çıktısı : ",paramtresiz_sonuc)
+
+def b():
+    x = 10
+    y = 5
+    return x * y
+
+fonksiyon_sonucu = b()
+print("fonksiyon sonucu : ",fonksiyon_sonucu)
+
 # 4- parametreli dönüşlü
+
+def parametreli_donuslu(p1,p2):
+    if p1 > p2 :
+        return p1
+    return p2
+
+enBuyuk = parametreli_donuslu(10, 20)
+print("enBuyuk deger : ",enBuyuk)
+
+pi = 3.14
+def dairenin_alani(r):
+    alan = pi * (r**2)
+    return alan
+
+# pi * r * r
+
+yaricap = int(input("yaricap giriniz : "))
+sonuc = dairenin_alani(yaricap)
+print("dairenin alanı : ", sonuc)
+
+
+
 
 
