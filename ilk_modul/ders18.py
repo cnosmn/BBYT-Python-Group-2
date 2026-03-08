@@ -72,4 +72,3 @@ print("kullanicilar : ", kullanicilar)
 # dönüş : True , False
 # hesabını silmesi için giriş yapması lazım
 # kullanıcılar listesinde o kullanıcı maili var mı var ise sil
-

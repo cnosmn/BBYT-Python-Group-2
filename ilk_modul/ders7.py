@@ -41,7 +41,7 @@ print("demet verisinin type : ", type(demet))
 
 
 # 3- Set (küme)
-# sırasız ve değiştirilemez veri türüdür
+# sırasız ve degistirilebilir veri türüdür
 # süslü parantez {} ile oluşturulur
 # index numarası yoktur
 # aynı veriden birden fazla olamaz
@@ -68,8 +68,6 @@ print("sozluk verisinin type : ", type(sozluk))
 print("ad : ", sozluk["ad"])
 print("keys : ",sozluk.keys())
 print("values : ",sozluk.values())
-
-
 
 
 # listeye özel fonksiyonlar
@@ -131,3 +129,5 @@ print("a verisinin dizideki index numarası : ", list4.index('a'))  # a'nın ind
 
 list5 = list1 + list2
 print("list5 : ", list5)
+
+
