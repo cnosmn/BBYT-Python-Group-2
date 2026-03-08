@@ -91,11 +91,101 @@ class Kahraman:
             return
         self.__level = yeni_level
         return "başarılı"
+    
+    # python da get ve set metotları yerine property dekoratörleri kullanılır
+
+    @property
+    def level(self):
+        return self.__level
+    @level.setter
+    def level(self,yeni_level):
+        if yeni_level < 0 : 
+            print("level negatif değer olamaz ")
+            return
+        self.__level = yeni_level
+        return "başarılı"
+    
+
+    def bilgileri_goster(self):
+        print("hp: ", self.__hp)
+        print("durability: ", self.durability)
+        print("envanter: ", self.envanter)
+        print("hız: ", self.hiz)
+        print("tur: ", self.tur)
+        print("meslek: ", self.meslek)
+        print("level: ", self.level)
+
+    def ileri(self):
+        print("ileri gidiliyor")
+        if self.durability < 100:
+            self.durability += 10
+            if self.durability > 100:
+                self.durability = 100
+
+        self.konum["y"] += self.hiz
+
+    def geri(self):
+        print("geri gidiliyor")
+        if self.durability < 100:
+            self.durability += 10
+            if self.durability > 100:
+                self.durability = 100
+        self.konum["y"] -= self.hiz
+
+    def sag(self):
+        print("sağa gidiliyor")
+        if self.durability < 100:
+            self.durability += 10
+            if self.durability > 100:
+                self.durability = 100
+        self.konum["x"] += self.hiz
+    
+    def sol(self):
+        print("sola gidiliyor")
+        if self.durability < 100:
+            self.durability += 10
+            if self.durability > 100:
+                self.durability = 100
+        self.konum["x"] -= self.hiz
+
+    def saldir(self):
+        print("saldırılıyor")
+        if self.durability <= 0:
+            print("Bu karakter saldıramaz, karakter çok incinmiş.")
+            return
+        if self.durability < 100:
+            self.durability -= 10
+            if self.durability < 0:
+                self.durability = 0
+
+    def kosma(self):
+        print("koşuluyor")
+        if self.durability <= 0:
+            print("Bu karakter koşamaz, karakter çok incinmiş.")
+            return
+        self.ileri()
+        self.ileri()
+        if self.durability < 100:
+            self.durability -= 50 # self.ileri metodu durability arttırdıgından dolayı
+            if self.durability < 0:
+                self.durability = 0
+"""
+-yemek_ye()
+açıklama : karakter yemek yediğinde açlık seviyesi artar ve hp si artar
+-kullan()
+açıklama : karakter bir eşya kullandığında envanterinden o eşya azalır ve karakterin hp si artar
+
+metotları ödev olarak veriyorum
+"""
+
+
 
 kahraman1 = Kahraman(100,100,{"torch":1},20,"ork","oduncu",170,150,"armadillo",{"x":0,"y":0},100,0)
 
 print(kahraman1.get_level())
-
 kahraman1.set_level(-5)
+
+kahraman1.level = -5
+print(kahraman1.level)
 
 # https://codeshare.io/5gvbWN
