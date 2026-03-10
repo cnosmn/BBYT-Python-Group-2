@@ -93,7 +93,7 @@ class Kahraman:
         return "başarılı"
     
     # python da get ve set metotları yerine property dekoratörleri kullanılır
-
+    # pytonic way -> python tarzı
     @property
     def level(self):
         return self.__level
@@ -163,29 +163,66 @@ class Kahraman:
         if self.durability <= 0:
             print("Bu karakter koşamaz, karakter çok incinmiş.")
             return
-        self.ileri()
-        self.ileri()
-        if self.durability < 100:
+        self.konum["y"] += self.hiz * 2
+        if self.durability <= 100:
             self.durability -= 50 # self.ileri metodu durability arttırdıgından dolayı
             if self.durability < 0:
                 self.durability = 0
-"""
--yemek_ye()
-açıklama : karakter yemek yediğinde açlık seviyesi artar ve hp si artar
--kullan()
-açıklama : karakter bir eşya kullandığında envanterinden o eşya azalır ve karakterin hp si artar
+    
+    def yemek_ye(self):
+        if self.aclik < 0:
+            print("aclik negatif degerde hata")
+            return
+        if self.aclik < 100:
+            self.durability += 20
+            self.aclik += 20
+            if self.aclik > 100:
+                self.aclik = 100
+            print("yemek yenildi, açlık ve durability arttı")
+            print("aclik: ", self.aclik)
+            print("durability: ", self.durability)
 
-metotları ödev olarak veriyorum
-"""
+    def kullan(self,kullanilacak_esya):
+        print(f"{kullanilacak_esya} kullanılıyor")
+        esya_var_mi = self.envanter.get(kullanilacak_esya,"esya yok")
+        if esya_var_mi == "esya yok":
+            print("aradıgın esya envanterde yok")
+            return
+        if esya_var_mi > 0 :
+            self.envanter[kullanilacak_esya] -= 1
+            print(f"{kullanilacak_esya} kullanıldı")
+        else:
+            print("kullanılacak esya envanterde bitmiş")
+            return
+        
+    def envantere_ekle(self,esya_adi,esya_adedi):
+        esya_var_mi = self.envanter.get(esya_adi,"esya yok")
+        if esya_adedi < 1 :
+            print("esya adedi 1'den küçük olamaz")
+            return
+        if esya_var_mi == "esya yok":
+            self.envanter[esya_adi] = esya_adedi
+            print("envantere",esya_adi,"eklendi",esya_adedi,"tane eklendi")
+        else :
+            self.envanter[esya_adi] += esya_adedi
+            print("envantere",esya_adi,"içerisine",esya_adedi,"tane eklendi")
 
+kahraman1 = Kahraman(100,100,{"torch":1,"bread":0,"water":5,"key":5,"potion":16},20,"ork","oduncu",170,150,"armadillo",{"x":0,"y":0},100,0)
+kahraman2 = Kahraman(100,100,{"torch":1,"bread":10,"water":10,"key":11,"potion":5},20,"elf","okçu",170,150,"tilki",{"x":0,"y":0},100,0)
+kahraman3 = Kahraman(100,100,{"torch":1,"bread":1,"water":3,"key":17,"potion":1},20,"insan","savaşçı",170,150,"tavşan",{"x":0,"y":0},100,0)
 
-
-kahraman1 = Kahraman(100,100,{"torch":1},20,"ork","oduncu",170,150,"armadillo",{"x":0,"y":0},100,0)
-
-print(kahraman1.get_level())
-kahraman1.set_level(-5)
-
-kahraman1.level = -5
-print(kahraman1.level)
-
-# https://codeshare.io/5gvbWN
+kahraman1.bilgileri_goster()
+kahraman1.ileri()
+kahraman1.sag()
+kahraman1.kosma()
+print("kahraman1.durability:", kahraman1.durability)
+print("kahraman1.envanter:", kahraman1.envanter)
+print("kahraman1.konum:", kahraman1.konum)
+print("kahraman1.aclik:", kahraman1.aclik)
+kahraman1.aclik = 70
+print("kahraman1.aclik:", kahraman1.aclik)
+kahraman1.yemek_ye()
+kahraman1.kullan("bread")
+print("kahraman1.envanter : ",kahraman1.envanter)
+kahraman1.envantere_ekle("bread",4)
+print("kahraman1.envanter : ",kahraman1.envanter)
