@@ -1,0 +1,16 @@
+[
+    {
+        "id": 1,
+        "ad": "can",
+        "soyad": "yılmaz",
+        "rol": "Doktor",
+        "uzmanlik": "beyin cerrahı"
+    },
+    {
+        "id": 1,
+        "ad": "osman",
+        "soyad": "can",
+        "rol": "Hasta",
+        "sikayet": "Baş ağrısı"
+    }
+]
